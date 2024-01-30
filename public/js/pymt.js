@@ -1,3 +1,5 @@
+// alert("hola entre");
+
 $(document).ready(function(){
     //For Card Number formatted input
     var cardNum = document.getElementById('cr_no');
