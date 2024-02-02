@@ -31,4 +31,7 @@
 3. Configura tu VirtualHost según sea necesario.
 
 ---
+##Instalaciones
+composer require guzzlehttp/guzzle
+npm install conekta
 
