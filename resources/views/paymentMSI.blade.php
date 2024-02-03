@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Seres de Riqueza</title>
@@ -8,8 +9,6 @@
     <link rel="stylesheet" href="/css/telStyle.css">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <link href="/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
-    <!-- Cargar boost -->
 </head>
 <body>
     <div class="container-fluid">
@@ -54,11 +53,11 @@
                                     <form id="card-form">
                                         <!----------------------->
                                         <div class="col-md-12">
-                                            <label class="pay" style="margin-top:8%;">Nombre</label> <input type="text" data-conekta="card[name]" name="holdername" placeholder="Juán Lopéz">
+                                            <label class="pay" style="margin-top:8%;">Nombre</label> <input type="text" data-conekta="card[name]" id="name_us" name="holdername" placeholder="Juán Lopéz">
                                         </div>
                                         <div class="col-md-12">
                                         <div class="col-md-12">
-                                            <label class="pay" style="margin-top:8%;">correo</label> <input type="text" name="holdername" placeholder="juan@seresderiqueza.com">
+                                            <label class="pay" style="margin-top:8%;">correo</label> <input type="text" name="holdername" id="email" placeholder="juan@seresderiqueza.com">
                                         </div>
 
                                         <div class="col-md-12">
@@ -69,22 +68,16 @@
                                                             <span class="iconify" data-icon="flag:mx-4x3"></span>
                                                             <strong>+52</strong>
                                                         </div>
-                                                        <input type="tel" name="tel" placeholder="Num. Teléfono">
+                                                        <input type="tel" name="tel" id="tel_phone" placeholder="Num. Teléfono">
                                                     </div>
                                                     <div class="options">
-                                                        <input type="text" class="search-box"  data-conekta="card[number]" placeholder="Selecciona un país">
+                                                        <input type="text" class="search-box" data-conekta="card[number]" placeholder="Selecciona un país">
                                                         <ol>
                                                         </ol>
                                                     </div>
                                                 </div>
 
                                         </div>
-                                            
-                                            <!-- <div class="col-md-4">
-                                                <label class="pay" style="margin-top:8%;">Telefono</label> <input type="text" name="holdername" placeholder="Teléfono">
-                                            </div> -->
-                                        <!-- </div> -->
-
                                         <div class="row">
                                             <div class="col-12">
                                                 <label class="pay">Número de tarjeta</label>
@@ -107,10 +100,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12" style="margin-top:4%;">
-                                                <!-- <form action="/procesar-pago" method="post"> -->
-                                                    @csrf <!-- Agrega el token CSRF para protección contra falsificación de solicitudes entre sitios -->
                                                     <input type="submit" value="PAGAR AHORA" class="btn btn-success">
-                                                <!-- </form> -->
                                             </div>
                                         </div>
                                        <!----------------------->
