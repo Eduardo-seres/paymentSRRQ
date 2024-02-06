@@ -40,6 +40,7 @@ $(document).ready(function() {
 
     let conektaErrorResponseHandler = function(response) {
         $form.find(".card-errors").text(response.message_to_purchaser);
+        alertGeneral('alertMont', 'Hubo un error en el pago favor de comunicarse con soporte@seresderiqueza.com', 'danger');//Fallo al tokenizar
         $form.find("button").prop("disabled", false);
     };
 
@@ -59,10 +60,11 @@ $(document).ready(function() {
 
 //Enviar la tokerización de la creditCard y datos del user
 function createCustomer(tokencrd){
+    document.querySelector('.loader-container').style.display = 'block';
     let nombre = document.getElementById('name_us').value;
     let correo = document.getElementById('email').value;
     let telefono = document.getElementById('tel_phone').value;
-    debugger;
+    // debugger;
     //Monto de acuerdo al ID
     precio = (monto == 'fothandnnhns'? 499700 : null);
      // Obtener el token CSRF del meta tag en el documento HTML
@@ -85,12 +87,22 @@ function createCustomer(tokencrd){
             data: data,
             success: function(response) {
                 if (response.responseData) {
+                    document.querySelector('.loader-container').style.display = 'none';
+                    alertGeneral('alertMont', '¡Pago completado con éxito!', 'info');//Todo correcto
                     // Redirigir a la página de agradecimiento
-                    window.location.href = 'https://www.google.com';
+                    setTimeout(function(){
+                        window.location.href = 'https://www.google.com';
+                    },3500);
+                    
                 }
             },
             error: function(xhr, status, error) {
-                window.location.href = 'https://secure.seresderiqueza.com/pagina-vencida3zly3waa';
+                document.querySelector('.loader-container').style.display = 'none';
+                alertGeneral('alertMont', '¡Hubo un error al generar tu pago, por favor contactate con el equipo de soporte!', 'danger');//Fallo al tokenizar
+                setTimeout(function(){
+                    window.location.href = 'https://secure.seresderiqueza.com/pagina-vencida3zly3waa';
+                },3500);
+               
             }
             
         });
@@ -118,7 +130,7 @@ function getQueryParams() {
 
 // // Llamar a la función y obtener los valores de los parámetros de consulta
  const { utmMedium, utmSource, cfUvid , monto } = getQueryParams();
-debugger;
+// debugger;
 // Hacer algo con los valores obtenidos, por ejemplo, asignarlos a variables o utilizarlos en tu lógica
 if (!utmMedium || !utmSource || !cfUvid || !monto || utmMedium === 'null' || utmSource === 'null' || cfUvid === 'null' || monto==='null') {
     window.location.href = 'https://secure.seresderiqueza.com/pagina-vencida3zly3waa';
@@ -126,4 +138,6 @@ if (!utmMedium || !utmSource || !cfUvid || !monto || utmMedium === 'null' || utm
 
 //Testing: 
 //http://www.payment_app.com/?&tags=normal&mnt=codeher&utm_medium=cpc&utm_source=Adrian&cf_uvid=Adrian
+//http://www.payment_app.com/?&tags=normal&mnt=fothandnnhns&utm_medium=cpc&utm_source=Adrian&cf_uvid=Adrian
 // //4213166137551234  -Credit test 
+

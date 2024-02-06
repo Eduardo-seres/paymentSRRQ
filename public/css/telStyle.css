@@ -77,6 +77,7 @@ input[type="tel"] {
 
 .select-box .options {
     position: absolute;
+    z-index: 1; /* Asegura que la select-box esté en la parte superior */
     top: 4rem;
     
     width: 100%;

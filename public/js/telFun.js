@@ -261,6 +261,10 @@ const countries = [
 
 let options = null;
 
+document.addEventListener("DOMContentLoaded", function() {
+    input_box.value = "+52"; //carga automatic mxn
+});
+
 for (country of countries) {
     const option = `
     <li class="option">

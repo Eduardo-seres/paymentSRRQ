@@ -38,6 +38,9 @@
                         <!-- <div class="col-md-6 col-sm-12 p-0 box"> -->
                         <div class="col-md-6 col-sm-12">
                             <div class="card rounded-0 border-0 card2">
+                                <div class="loader-container" style="display:none;">
+                                    <span class="loader"></span>
+                                </div>
                                 <div class="form-card">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -59,7 +62,13 @@
                                         <div class="col-md-12">
                                             <label class="pay" style="margin-top:8%;">correo</label> <input type="text" name="holdername" id="email" placeholder="juan@seresderiqueza.com">
                                         </div>
-
+                                        <div class="col-md-12">
+                                            <h4 class="pay" style="margin-top:8%;color:black; text-align: center;">Planes de Pago</h4>
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option selected value="3">3 Meses sin intereses</option>
+                                                <option value="6">6 Meses sin intereses</option>
+                                            </select>
+                                        </div>
                                         <div class="col-md-12">
                                             
                                                 <div class="select-box">
@@ -88,19 +97,20 @@
                                             <div class="col-md-12">
                                                 <label class="pay">Fecha de expiración</label>
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" id="month" name="exp_month" size="2" data-conekta="card[exp_month]" placeholder="MM">
+                                                    <input type="text" class="form-control" data-toggle="popover" title="Fecha Incorrecta" data-content="La fecha debe ser de 01 al 12" id="month" name="exp_month" size="2" minlength="2" maxlength="2" data-conekta="card[exp_month]" placeholder="MM">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">/</span>
                                                     </div>
-                                                    <input type="text" class="form-control" id="year" name="expyear" name="exp_year" size="4" data-conekta="card[exp_year]" placeholder="AAAA">
+                                                    <div id="alertContainer"></div> <!--mostrar Alerts-->
+                                                    <input type="text" class="form-control" data-toggle="popover" title="Año incorrecto" data-content="Debes poner los 4 digitos del año" id="year" name="expyear" name="exp_year" minlength="4" maxlength="4" size="4" data-conekta="card[exp_year]" placeholder="AAAA">
                                                     <label class="pay">CVV</label>
-                                                    <input type="password" data-conekta="card[cvc]" name="cvcpwd" placeholder="&#9679;&#9679;&#9679;" class="form-control placeicon" minlength="3" maxlength="3">
+                                                    <input type="password" data-toggle="popover" title="CVV Incorrecto" data-content="Debes poner al menos 3 digitos de tú cvv" data-conekta="card[cvc]" name="cvcpwd" id='cvcpwd'placeholder="&#9679;&#9679;&#9679;" class="form-control placeicon" minlength="3" maxlength="4">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12" style="margin-top:4%;">
-                                                    <input type="submit" value="PAGAR AHORA" class="btn btn-success">
+                                                    <input type="submit" value="PAGAR AHORA" class="disabled-button" >
                                             </div>
                                         </div>
                                        <!----------------------->
@@ -120,6 +130,7 @@
     <script src="/js/pymt.js"></script>
     <script src="/js/telFun.js"></script>
     <script src="/js/all.min.js"></script>
+    <script src="/js/vldpm.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdn.conekta.io/js/latest/conekta.js"></script>
 </footer>
