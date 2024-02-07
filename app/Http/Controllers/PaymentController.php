@@ -15,15 +15,16 @@ class PaymentController extends Controller
         $telPrep = str_replace(' ', '', $telefono);
         $tokencrd = $request->input('tokencrd');
         $vendedor = $request->input('vendedor');
-        $precio = $request->input('precio');   
+        $precio = $request->input('precio');
+        $planmsi = $request->input('planmsi');   
         //intanciamos el objeto
             $client = new Client();
             //Se hace un pago Unico y se registo
             $response = $client->request('POST', 'https://api.conekta.io/orders', [
-                'body' => '{"customer_info":{"name":"' . $nombre . '","email":"' . $correo . '","phone":"' . $telPrep . '"},"metadata":{"vendedor":"' . $vendedor . '"},"pre_authorize":false,"charges":[{"amount":' . $precio . ',"payment_method":{"type":"card","token_id":"' . $tokencrd . '","monthly_installments":3}}],"currency":"MXN","line_items":[{"name":"Riqueza Infinita","quantity":1,"unit_price":' . $precio . '}]}',
+                'body' => '{"customer_info":{"name":"' . $nombre . '","email":"' . $correo . '","phone":"' . $telPrep . '"},"metadata":{"vendedor":"' . $vendedor . '"},"pre_authorize":false,"charges":[{"amount":' . $precio . ',"payment_method":{"type":"card","token_id":"' . $tokencrd . '","monthly_installments":' . $planmsi . '}}],"currency":"MXN","line_items":[{"name":"Riqueza Infinita","quantity":1,"unit_price":' . $precio . '}]}',
                 'headers' => [
                     'accept' => 'application/vnd.conekta-v2.1.0+json',
-                    'authorization' => 'Bearer key_npo5I4VRjZs78h6Edv6tnMv',
+                    'authorization' => 'Bearer key_npo5I4VRjZs78h6Edv6tnMv',//conekta priv
                     'content-type' => 'application/json',
                 ],
             ]);

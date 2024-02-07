@@ -64,6 +64,7 @@ function createCustomer(tokencrd){
     let nombre = document.getElementById('name_us').value;
     let correo = document.getElementById('email').value;
     let telefono = document.getElementById('tel_phone').value;
+    let msi = document.getElementById('selectmonth').value;
     // debugger;
     //Monto de acuerdo al ID
     precio = (monto == 'fothandnnhns'? 499700 : null);
@@ -75,6 +76,7 @@ function createCustomer(tokencrd){
             nombre: nombre,
             correo: correo,
             telefono: telefono,
+            planmsi: msi,
             _token: csrfToken,
              tokencrd: tokencrd,
              precio: precio,
