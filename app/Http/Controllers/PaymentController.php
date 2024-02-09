@@ -15,8 +15,11 @@ class PaymentController extends Controller
         $telPrep = str_replace(' ', '', $telefono);
         $tokencrd = $request->input('tokencrd');
         $vendedor = $request->input('vendedor');
-        $precio = $request->input('precio');
         $planmsi = $request->input('planmsi'); 
+        //MOVER EN PROD
+        $precio = intval($request->input('precio'));
+        $producto = $request->input('producto');
+        $generacion = $request->input('generacion');
         $curl = curl_init();
     
         curl_setopt_array($curl, [
@@ -35,13 +38,13 @@ class PaymentController extends Controller
             ],
             'metadata' => [
                 'vendedor' => $vendedor,
-                'generacion' => 'generacion 40'
+                'generacion' =>  $generacion
             ],
             'pre_authorize' => false,
             'currency' => 'MXN',
             'line_items' => [
                 [
-                        'name' => 'Riqueza Infinita',
+                        'name' => $producto,
                         'quantity' => 1,
                         'unit_price' => $precio
                 ]
@@ -60,7 +63,7 @@ class PaymentController extends Controller
           CURLOPT_HTTPHEADER => [
             "Accept-Language: es",
             "accept: application/vnd.conekta-v2.1.0+json",
-            "authorization: Bearer key_npo5I4VRjZs78h6Edv6tnMv", //PROD: key_7JWkHW1gL2BaSIMQ8nYv4xN
+            "authorization: Bearer key_kqjesLMXCUfP15ogurpoY09", //PROD: key_7JWkHW1gL2BaSIMQ8nYv4xN
             "content-type: application/json"
           ],
         ]);

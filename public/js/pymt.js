@@ -64,6 +64,16 @@ $(document).ready(function() {
     productTittle.innerHTML = `<i class="fa-solid fa-circle-check"></i>&nbsp;${titleVariable}`;
     precioTittle.textContent = precioT;
 
+    //MOVER A PROD
+    // debugger;
+    let doceMont = document.getElementById('selectmonth');
+    if(codifc12 == 'srq12'){
+        let optionMsi = document.createElement('option');
+        optionMsi.text= '12 Meses sin intereses';
+        optionMsi.value= '12'
+        doceMont.appendChild(optionMsi);
+    }
+
 });
 
 //Enviar la tokerización de la creditCard y datos del user
@@ -137,15 +147,24 @@ function getQueryParams() {
     let monto = urlParams.get('mnt');
     let generacion = urlParams.get('algn');
     let producto = urlParams.get('producto');
+    let codifc12 = urlParams.get('msi');
 
-    return { utmSource, cfUvid, monto, generacion, producto };
+    return { utmSource, cfUvid, monto, generacion, producto, codifc12 };
 }
 
 // // Llamar a la función y obtener los valores de los parámetros de consulta
- const { utmSource, cfUvid , monto , generacion, producto} = getQueryParams();
+ const { utmSource, cfUvid , monto , generacion, producto, codifc12} = getQueryParams();
 // Hacer algo con los valores obtenidos, por ejemplo, asignarlos a variables o utilizarlos en tu lógica
 if (!utmSource || !cfUvid || !monto || !generacion || !producto || generacion === 'null' || producto === 'null' || utmSource === 'null' || cfUvid === 'null' || monto==='null') {
     window.location.href = 'https://secure.seresderiqueza.com/pagina-vencida3zly3waa';
+}
+
+//MOVER A PROD
+// debugger;
+if(producto == '01 Riqueza Infinita' && monto !== 'fothandnnhns'){
+    window.location.href = `http://www.payment_app.com/?&tags=normal&mnt=fothandnnhns&utm_source=${utmSource}&cf_uvid=${cfUvid}&algn=${generacion}&producto=01%20Riqueza%20Infinita`
+}else if(producto == 'Incubadora Libertad Financiera' && monto !== 'sixtnnhunsev'){
+    window.location.href = `http://www.payment_app.com/?&tags=normal&mnt=sixtnnhunsev&utm_source=${utmSource}&cf_uvid=${cfUvid}&algn=${generacion}&producto=Incubadora%20Libertad%20Financiera`
 }
 
 //Testing: 
@@ -154,6 +173,8 @@ if (!utmSource || !cfUvid || !monto || !generacion || !producto || generacion ==
 
 //Incubadora
 //http://www.payment_app.com/?&tags=normal&mnt=sixtnnhunsev&utm_source=Adrian&cf_uvid=Adrian&algn=40&producto=Incubadora%20Libertad%20Financiera
+//Incubadora 12msi:
+//http://www.payment_app.com/?&tags=normal&mnt=sixtnnhunsev&utm_source=Adrian&cf_uvid=Adrian&algn=40&producto=Incubadora%20Libertad%20Financiera&msi=srq12
 
 //Prod:
 //https://panel.fivetwofive.tech/paymentApp/?&tags=normal&mnt=fothandnnhns&utm_source=Adrian&cf_uvid=Adrian&algn=40&producto=01%20Riqueza%20Infinita
