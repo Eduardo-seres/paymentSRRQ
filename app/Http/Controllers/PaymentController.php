@@ -16,29 +16,69 @@ class PaymentController extends Controller
         $tokencrd = $request->input('tokencrd');
         $vendedor = $request->input('vendedor');
         $precio = $request->input('precio');
-        $planmsi = $request->input('planmsi');   
-        //intanciamos el objeto
-            $client = new Client();
-            //Se hace un pago Unico y se registo
-            $response = $client->request('POST', 'https://api.conekta.io/orders', [
-                'body' => '{"customer_info":{"name":"' . $nombre . '","email":"' . $correo . '","phone":"' . $telPrep . '"},"metadata":{"vendedor":"' . $vendedor . '"},"pre_authorize":false,"charges":[{"amount":' . $precio . ',"payment_method":{"type":"card","token_id":"' . $tokencrd . '","monthly_installments":' . $planmsi . '}}],"currency":"MXN","line_items":[{"name":"Riqueza Infinita","quantity":1,"unit_price":' . $precio . '}]}',
-                'headers' => [
-                    'accept' => 'application/vnd.conekta-v2.1.0+json',
-                    'authorization' => 'Bearer key_npo5I4VRjZs78h6Edv6tnMv',//conekta priv
-                    'content-type' => 'application/json',
-                ],
-            ]);
-            
-        $statusCode = $response->getStatusCode();
-        if($statusCode === 200){
-            $responseBody = $response->getBody()->getContents();
-            $responseData = json_decode($responseBody);
-            return response()->json(['responseData' => $responseData], 200);
-        }else{
-            return response()->json(['error' => 'Hubo un problema al procesar la solicitud'], $statusCode);
-        }           
+        $planmsi = $request->input('planmsi'); 
+        $curl = curl_init();
+    
+        curl_setopt_array($curl, [
+          CURLOPT_URL => "https://api.conekta.io/orders",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "POST",
+          CURLOPT_POSTFIELDS => json_encode([
+            'customer_info' => [
+                'name' =>  $nombre,
+                'email' => $correo,
+                'phone' => $telPrep
+            ],
+            'metadata' => [
+                'vendedor' => $vendedor,
+                'generacion' => 'generacion 40'
+            ],
+            'pre_authorize' => false,
+            'currency' => 'MXN',
+            'line_items' => [
+                [
+                        'name' => 'Riqueza Infinita',
+                        'quantity' => 1,
+                        'unit_price' => $precio
+                ]
+            ],
+            'charges' => [
+                [
+                        'payment_method' => [
+                                        'type' => 'card',
+                                        'token_id' => $tokencrd,
+                                        'monthly_installments' => $planmsi
+                        ],
+                        'amount' => $precio
+                ]
+            ]
+          ]),
+          CURLOPT_HTTPHEADER => [
+            "Accept-Language: es",
+            "accept: application/vnd.conekta-v2.1.0+json",
+            "authorization: Bearer key_npo5I4VRjZs78h6Edv6tnMv", //PROD: key_7JWkHW1gL2BaSIMQ8nYv4xN
+            "content-type: application/json"
+          ],
+        ]);
+        
+        $response = curl_exec($curl);
+        $httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);     
+        curl_close($curl);
+        
+        if ($httpStatus == 200) {
+            return response()->json(['responseData' => $response], 200);
+        } else {
+            return response()->json(['error' => 'Error en la solicitud. Código de estado HTTP: ' . $httpStatus], $httpStatus);
+        }
+
     }
 
+   
+    
 
     //REGISTRAMOS CLIENTE Y LUEGO SE PAGA
 

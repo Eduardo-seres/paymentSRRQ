@@ -17,44 +17,20 @@
                 <div class="card card0 rounded-0">
                     <div class="row">
                         <div class="col-md-6 d-block">
-                        <!-- <div class="col-md-5 d-block p-0 box"> -->
-                            <div class="card rounded-0 border-0 card1 pr-xl-4 pr-lg-3">
-                                <img src="/assets/img/product.png" height="100%">
-                            </div>
-                            <h3 class="d-flex justify-content-center" style="margin-top:2%">INSTRUCCIONES</h3>
-                            <div class="p-4 bd-highlight" style="margin-top:-4%;"> <strong><i class="fa fa-check" aria-hidden="true"></i> PASO 1.</strong> Completa con tus datos personales el formulario.</div>
-                            <div class="p-4 bd-highlight" style="margin-top:-6%;"> <strong><i class="fa fa-check" aria-hidden="true"></i> PASO 2.</strong> Escribe los datos de tu tarjeta de débito o crédito y da clic en <strong>“Adquirir mi curso ahora”</strong>.</div>
-                            <div class="p-4 bd-highlight" style="margin-top:-6%;"> <strong><i class="fa fa-check" aria-hidden="true"></i> PASO 3.</strong> Al pagar recibirás automáticamente tus accesos a <strong>Riqueza Infinita</strong> por correo electrónico </div>
-                            <div><h1 class="container.container-lg"></h1></div>
-                            <div class="col-md-12">
-                                <div class="d-flex justify-content-center"><i class="fa_prepended fa fa-support" style="color: rgb(242, 177, 29); height:28px"></i> <strong class=""> &nbsp;&nbsp;¿Necesitas ayuda?</strong></div>
-                                <div class="d-flex justify-content-center" style="margin-top:2%;">Envíanos un correo electrónico ahora</div>
-                                <div class="d-flex justify-content-center" style="margin-top:1%;"><strong style=" color:rgb(242, 177, 29);">clientes@seresderiqueza.com</strong>&nbsp; | o envía</div>
-                                <strong  class="d-flex justify-content-center" style="margin-top:1%;">envía un WhatsApp al +52 55 5620 6438</strong>
-                                <div class="d-flex justify-content-center" style="margin-top:4%;"><strong>*Pregunta por nuestros Meses sin intereses *</strong></div>
-                                <div class="col-md-12">&nbsp;</div>
-                            </div>
-                        </div>
-                        <!-- <div class="col-md-6 col-sm-12 p-0 box"> -->
-                        <div class="col-md-6 col-sm-12">
                             <div class="card rounded-0 border-0 card2">
                                 <div class="loader-container" style="display:none;">
                                     <span class="loader"></span>
                                 </div>
+                                <!-- Payment Form -->
                                 <div class="form-card">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <h3 class="d-inline" style="margin-right: 10px;"><i class="fa-solid fa-circle-check"></i>&nbsp;Riqueza Infinita</h3>
-                                            <h2 class="d-inline" style="color: rgb(242, 177, 29);">$4997</h2>
+                                            <!-- ACTUALIZAR PROD -->
+                                            <h3 class="d-inline" id="principal-prod" style="margin-right: 10px;"><i class="fa-solid fa-circle-check"></i></h3>
+                                            <h2 class="d-inline" id="principal-prec" style="color: rgb(242, 177, 29);"></h2>
                                         </div>
-                                    </div>     
-                                    <!-- <div class="col-md-12">
-                                        <h2 id="heading" class="">Riqueza Infinita</h2>
-                                        <label class="pay">$4997</label>
-                                    </div> -->
-                                    <!-- <div class="row"> -->             
+                                    </div> 
                                     <form id="card-form">
-                                        <!----------------------->
                                         <div class="col-md-12">
                                             <label class="pay" style="margin-top:8%;">Nombre</label> <input type="text" data-conekta="card[name]" id="name_us" name="holdername" placeholder="Juán Lopéz">
                                         </div>
@@ -64,7 +40,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <h4 class="pay" style="margin-top:8%;color:black; text-align: center;">Planes de Pago</h4>
-                                            <select class="form-select" aria-label="Default select example">
+                                            <select class="form-select" id='selectmonth' aria-label="Default select example">
                                                 <option selected value="3">3 Meses sin intereses</option>
                                                 <option value="6">6 Meses sin intereses</option>
                                             </select>
@@ -113,9 +89,27 @@
                                                     <input type="submit" value="PAGAR AHORA" class="disabled-button" >
                                             </div>
                                         </div>
-                                       <!----------------------->
-                                    </form>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+                        <!-- Instrucciones de Compra -->
+                        <div class="col-md-6 col-sm-12">
+                            <div class="card rounded-0 border-0 card1 pr-xl-4 pr-lg-3">
+                                <img src="/assets/img/product.png" height="100%">
+                            </div>
+                            <h3 class="d-flex justify-content-center" style="margin-top:2%">INSTRUCCIONES</h3>
+                            <div class="p-4 bd-highlight" style="margin-top:-4%;"> <strong><i class="fa fa-check" aria-hidden="true"></i> PASO 1.</strong> Completa con tus datos personales el formulario.</div>
+                            <div class="p-4 bd-highlight" style="margin-top:-6%;"> <strong><i class="fa fa-check" aria-hidden="true"></i> PASO 2.</strong> Escribe los datos de tu tarjeta de débito o crédito y da clic en <strong>“Adquirir mi curso ahora”</strong>.</div>
+                            <div class="p-4 bd-highlight" style="margin-top:-6%;"> <strong><i class="fa fa-check" aria-hidden="true"></i> PASO 3.</strong> Al pagar recibirás automáticamente tus accesos a <strong>Riqueza Infinita</strong> por correo electrónico </div>
+                            <div><h1 class="container.container-lg"></h1></div>
+                            <div class="col-md-12">
+                                <div class="d-flex justify-content-center"><i class="fa_prepended fa fa-support" style="color: rgb(242, 177, 29); height:28px"></i> <strong class=""> &nbsp;&nbsp;¿Necesitas ayuda?</strong></div>
+                                <div class="d-flex justify-content-center" style="margin-top:2%;">Envíanos un correo electrónico ahora</div>
+                                <div class="d-flex justify-content-center" style="margin-top:1%;"><strong style=" color:rgb(242, 177, 29);">clientes@seresderiqueza.com</strong>&nbsp; | o envía</div>
+                                <strong  class="d-flex justify-content-center" style="margin-top:1%;">envía un WhatsApp al +52 55 5620 6438</strong>
+                                <div class="d-flex justify-content-center" style="margin-top:4%;"><strong>*Pregunta por nuestros Meses sin intereses *</strong></div>
+                                <div class="col-md-12">&nbsp;</div>
                             </div>
                         </div>
                     </div>

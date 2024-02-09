@@ -56,6 +56,14 @@ $(document).ready(function() {
 
         Conekta.Token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler);
     });
+
+    let titleVariable = (producto == '01 Riqueza Infinita'? 'Riqueza Infinita': (producto == 'Incubadora Libertad Financiera') ? 'Incubadora Libertad Financiera' : 'Error'  );
+    let precioT = (monto == 'fothandnnhns' ? '$4997' : monto == 'sixtnnhunsev' ? '$16997' : 'error');
+    const productTittle= document.getElementById('principal-prod');
+    const precioTittle= document.getElementById('principal-prec');
+    productTittle.innerHTML = `<i class="fa-solid fa-circle-check"></i>&nbsp;${titleVariable}`;
+    precioTittle.textContent = precioT;
+
 });
 
 //Enviar la tokerización de la creditCard y datos del user
@@ -67,7 +75,7 @@ function createCustomer(tokencrd){
     let msi = document.getElementById('selectmonth').value;
     // debugger;
     //Monto de acuerdo al ID
-    precio = (monto == 'fothandnnhns'? 499700 : null);
+    precio = (monto == 'fothandnnhns'? 499700 : monto == 'sixtnnhunsev' ? 1699700 : null );
      // Obtener el token CSRF del meta tag en el documento HTML
       if(precio !== null){
         let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -80,7 +88,9 @@ function createCustomer(tokencrd){
             _token: csrfToken,
              tokencrd: tokencrd,
              precio: precio,
-             vendedor: utmSource
+             vendedor: utmSource,
+             producto: producto,
+             generacion: generacion
         };
     
         $.ajax({
@@ -122,24 +132,28 @@ function getQueryParams() {
     let urlParams = new URLSearchParams(queryParams);
     
     // Obtener el valor de los parámetros de consulta
-    let utmMedium = urlParams.get('utm_medium');
     let utmSource = urlParams.get('utm_source');
     let cfUvid = urlParams.get('cf_uvid');
     let monto = urlParams.get('mnt');
+    let generacion = urlParams.get('algn');
+    let producto = urlParams.get('producto');
 
-    return { utmMedium, utmSource, cfUvid, monto };
+    return { utmSource, cfUvid, monto, generacion, producto };
 }
 
 // // Llamar a la función y obtener los valores de los parámetros de consulta
- const { utmMedium, utmSource, cfUvid , monto } = getQueryParams();
-// debugger;
+ const { utmSource, cfUvid , monto , generacion, producto} = getQueryParams();
 // Hacer algo con los valores obtenidos, por ejemplo, asignarlos a variables o utilizarlos en tu lógica
-if (!utmMedium || !utmSource || !cfUvid || !monto || utmMedium === 'null' || utmSource === 'null' || cfUvid === 'null' || monto==='null') {
+if (!utmSource || !cfUvid || !monto || !generacion || !producto || generacion === 'null' || producto === 'null' || utmSource === 'null' || cfUvid === 'null' || monto==='null') {
     window.location.href = 'https://secure.seresderiqueza.com/pagina-vencida3zly3waa';
 }
 
 //Testing: 
-//http://www.payment_app.com/?&tags=normal&mnt=codeher&utm_medium=cpc&utm_source=Adrian&cf_uvid=Adrian
-//http://www.payment_app.com/?&tags=normal&mnt=fothandnnhns&utm_medium=cpc&utm_source=Adrian&cf_uvid=Adrian
+//http://www.payment_app.com/?&tags=normal&mnt=fothandnnhns&utm_source=Adrian&cf_uvid=Adrian&algn=40&producto=01%20Riqueza%20Infinita
 // //4213166137551234  -Credit test 
 
+//Incubadora
+//http://www.payment_app.com/?&tags=normal&mnt=sixtnnhunsev&utm_source=Adrian&cf_uvid=Adrian&algn=40&producto=Incubadora%20Libertad%20Financiera
+
+//Prod:
+//https://panel.fivetwofive.tech/paymentApp/?&tags=normal&mnt=fothandnnhns&utm_source=Adrian&cf_uvid=Adrian&algn=40&producto=01%20Riqueza%20Infinita
