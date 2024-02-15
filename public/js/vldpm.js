@@ -138,3 +138,11 @@ for (let i = 0; i < formularioCard.length; i++) {
         }
     });
 }
+
+document.getElementById('btnMod').addEventListener('click',function(){
+    window.location.href = 'https://seresderiqueza.mx/soporte-pagos';
+});
+
+document.getElementById('modalCls').addEventListener('click', function(){
+    $('#modalErr').modal('hide');
+});

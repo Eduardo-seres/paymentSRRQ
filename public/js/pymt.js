@@ -73,7 +73,6 @@ $(document).ready(function() {
         optionMsi.value= '12'
         doceMont.appendChild(optionMsi);
     }
-
 });
 
 //Enviar la tokerización de la creditCard y datos del user
@@ -113,24 +112,25 @@ function createCustomer(tokencrd){
                     alertGeneral('alertMont', '¡Pago completado con éxito!', 'info');//Todo correcto
                     // Redirigir a la página de agradecimiento
                     setTimeout(function(){
-                        window.location.href = 'https://www.google.com';
+                        window.location.href = 'https://secure.seresderiqueza.com/confirmacion-pago-riqueza-infinita-v1';
                     },3500);
                     
                 }
             },
             error: function(xhr, status, error) {
                 document.querySelector('.loader-container').style.display = 'none';
+                alert(error);
                 alertGeneral('alertMont', '¡Hubo un error al generar tu pago, por favor contactate con el equipo de soporte!', 'danger');//Fallo al tokenizar
                 setTimeout(function(){
-                    window.location.href = 'https://secure.seresderiqueza.com/pagina-vencida3zly3waa';
-                },3500);
+                    $('#modalErr').modal('show');
+                },700);
                
             }
             
         });
 
      }else{
-        window.location.href = 'https://secure.seresderiqueza.com/pagina-vencida3zly3waa';
+        $('#modalErr').modal('show');
      }
     
 }

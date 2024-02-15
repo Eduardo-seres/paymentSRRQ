@@ -41,6 +41,7 @@
                                         <div class="col-md-12">
                                             <h4 class="pay" style="margin-top:8%;color:black; text-align: center;">Planes de Pago</h4>
                                             <select class="form-select" id='selectmonth' aria-label="Default select example">
+                                                <option value="">Una sola exhibición</option>
                                                 <option selected value="3">3 Meses sin intereses</option>
                                                 <option value="6">6 Meses sin intereses</option>
                                             </select>
@@ -117,6 +118,28 @@
             </div>
         </div>
     </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalErr" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Error de pago</h5>
+        <button type="button" id="modalCls" class="close" data-dismiss="modal" style='outline: none; border: none;background: none; padding: 0; ' aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Contáctate con nuestro equipo para ayudarte con tu inscripción.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id='btnMod' class="btn btn-primary" data-dismiss="modal">Contactar a soporte</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 <footer>
     <script src="/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
