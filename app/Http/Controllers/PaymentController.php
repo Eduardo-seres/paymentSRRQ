@@ -84,7 +84,6 @@ class PaymentController extends Controller
         } else {
             return response()->json(['error' => 'Error en la solicitud. Código de estado HTTP: ' . $httpStatus], $httpStatus);
         }
-
     }
 
    
