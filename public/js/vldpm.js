@@ -60,9 +60,9 @@ dateYear.addEventListener("blur", function(event){
     inputAnioVal = inputAnioVal.replace(/\D/g, '');
     dateYear.value = inputAnioVal;
     let fechaActual = new Date();
-    let anioAct = fechaActual.getFullYear();
+    let anioAct = fechaActual.getFullYear()% 100;
     // let mesAct = fechaActual.getMonth() + 1;
-    if (inputAnioVal.length == 4) {
+    if (inputAnioVal.length == 2) {
         if(inputAnioVal < anioAct){
             // console.log('escribiste un año menor');
             dateYear.value='';

@@ -72,14 +72,14 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
+                                                <div id="alertContainer"></div> <!--mostrar Alerts-->
                                                 <label class="pay">Fecha de expiración</label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control" data-toggle="popover" title="Fecha Incorrecta" data-content="La fecha debe ser de 01 al 12" id="month" name="exp_month" size="2" minlength="2" maxlength="2" data-conekta="card[exp_month]" placeholder="MM">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">/</span>
                                                     </div>
-                                                    <div id="alertContainer"></div> <!--mostrar Alerts-->
-                                                    <input type="text" class="form-control" data-toggle="popover" title="Año incorrecto" data-content="Debes poner los 4 digitos del año" id="year" name="expyear" name="exp_year" minlength="4" maxlength="4" size="4" data-conekta="card[exp_year]" placeholder="AAAA">
+                                                    <input type="text" class="form-control" data-toggle="popover" title="Año incorrecto" data-content="Debes poner un año correcto" id="year" name="expyear" name="exp_year" minlength="2" maxlength="2" size="2" data-conekta="card[exp_year]" placeholder="AAAA">
                                                     <label class="pay">CVV</label>
                                                     <input type="password" data-toggle="popover" title="CVV Incorrecto" data-content="Debes poner al menos 3 digitos de tú cvv" data-conekta="card[cvc]" name="cvcpwd" id='cvcpwd'placeholder="&#9679;&#9679;&#9679;" class="form-control placeicon" minlength="3" maxlength="4">
                                                 </div>

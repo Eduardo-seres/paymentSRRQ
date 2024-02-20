@@ -12,8 +12,9 @@ class PaymentController extends Controller
         $nombre = $request->input('nombre');
         $correo = $request->input('correo');
         $telefono = $request->input('telefono');   
-        $telPrep = str_replace(' ', '', $telefono);
-        $tokencrd = 'tok_2vRUWJ6siP3PWeKUb';
+        $telPrep = str_replace([' ', '+'], '', $telefono);
+        // $tokencrd = 'tok_2vRUWJ6siP3PWeKUb';
+        $tokencrd = $request->input('tokencrd');   
         $vendedor = $request->input('vendedor');
         $planmsi = $request->input('planmsi'); 
         // $precio = intval($request->input('precio'));
@@ -70,7 +71,7 @@ class PaymentController extends Controller
           CURLOPT_HTTPHEADER => [
             "Accept-Language: es",
             "accept: application/vnd.conekta-v2.1.0+json",
-            "authorization: Bearer key_7JWkHW1gL2BaSIMQ8nYv4xN", //PROD: key_7JWkHW1gL2BaSIMQ8nYv4xN //Test: key_kqjesLMXCUfP15ogurpoY09// key_4zlUj1H2b9qAV79hQOqfi4q
+            "authorization: Bearer key_kqjesLMXCUfP15ogurpoY09", //PROD: key_7JWkHW1gL2BaSIMQ8nYv4xN //Test: key_kqjesLMXCUfP15ogurpoY09// key_4zlUj1H2b9qAV79hQOqfi4q
             "content-type: application/json"
           ],
         ]);
