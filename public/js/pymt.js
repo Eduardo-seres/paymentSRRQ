@@ -155,6 +155,15 @@ function getQueryParams() {
 // // Llamar a la función y obtener los valores de los parámetros de consulta
  const { utmSource, cfUvid , monto , generacion, producto, codifc12} = getQueryParams();
 // Hacer algo con los valores obtenidos, por ejemplo, asignarlos a variables o utilizarlos en tu lógica
+
+if(utmSource === 'null' || cfUvid === 'null' ){
+    window.location.href = `http://www.payment_app.com/?&tags=normal&mnt=fothandnnhns&utm_source=webinar-jueves&cf_uvid=webinar-jueves&algn=${generacion}&producto=01%20Riqueza%20Infinita`;
+}
+
+if(utmSource === '' || cfUvid === '' ){
+   window.location.href = `http://www.payment_app.com/?&tags=normal&mnt=fothandnnhns&utm_source=webinar-jueves&cf_uvid=webinar-jueves&algn=${generacion}&producto=01%20Riqueza%20Infinita`;
+}
+
 if (!utmSource || !cfUvid || !monto || !generacion || !producto || generacion === 'null' || producto === 'null' || utmSource === 'null' || cfUvid === 'null' || monto==='null') {
     window.location.href = 'https://secure.seresderiqueza.com/pagina-vencida3zly3waa';
 }
@@ -162,9 +171,9 @@ if (!utmSource || !cfUvid || !monto || !generacion || !producto || generacion ==
 //MOVER A PROD
 // debugger;
 if(producto == '01 Riqueza Infinita' && monto !== 'fothandnnhns'){
-    window.location.href = `http://www.payment_app.com/?&tags=normal&mnt=fothandnnhns&utm_source=${utmSource}&cf_uvid=${cfUvid}&algn=${generacion}&producto=01%20Riqueza%20Infinita`
+    window.location.href = `http://www.payment_app.com/?&tags=normal&mnt=fothandnnhns&utm_source=${utmSource}&cf_uvid=${cfUvid}&algn=${generacion}&producto=01%20Riqueza%20Infinita`;
 }else if(producto == 'Incubadora Libertad Financiera' && monto !== 'sixtnnhunsev'){
-    window.location.href = `http://www.payment_app.com/?&tags=normal&mnt=sixtnnhunsev&utm_source=${utmSource}&cf_uvid=${cfUvid}&algn=${generacion}&producto=Incubadora%20Libertad%20Financiera`
+    window.location.href = `http://www.payment_app.com/?&tags=normal&mnt=sixtnnhunsev&utm_source=${utmSource}&cf_uvid=${cfUvid}&algn=${generacion}&producto=Incubadora%20Libertad%20Financiera`;
 }
 
 //Testing: 

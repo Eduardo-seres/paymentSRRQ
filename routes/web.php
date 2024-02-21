@@ -19,3 +19,8 @@ Route::get('/', function () {
 
 
 Route::post('/procesar-pago', [PaymentController::class, 'createOrder']);
+
+
+Route::get('/finanzas', function () {
+    return view('fianzasSaldo');
+});
