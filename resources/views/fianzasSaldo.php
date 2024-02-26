@@ -16,7 +16,7 @@
     </div>
     <div id="alertContainer"></div> <!--mostrar Alerts-->
     <div class="col-md-6 offset-md-3">
-      <h2 class="mb-4">Reporte de Saldos Stripe</h2>
+      <h2 class="mb-4" id="tittleR">Reporte de Saldos Stripe</h2>
       <!-- <form id='formWb'> -->
         <div class="form-group row">
           <div class="col-md-6">
