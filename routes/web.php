@@ -24,3 +24,8 @@ Route::post('/procesar-pago', [PaymentController::class, 'createOrder']);
 Route::get('/finanzas', function () {
     return view('fianzasSaldo');
 });
+
+
+Route::get('/passForgot', function () {
+    return view('forgotPass');
+});
