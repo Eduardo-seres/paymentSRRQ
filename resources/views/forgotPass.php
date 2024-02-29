@@ -22,12 +22,12 @@
               </div>
               <div id="alertContainer"></div> <!--mostrar Alerts-->
               <h3><i class="fa fa-lock fa-4x"></i></h3>
-              <h2 class="text-center">¿Olvidó su contraseña?</h2>
+              <h2 id="titleText" class="text-center">¿Olvidó su contraseña?</h2>
               <p>Coloque su correo registrado al portal</p>
               <div class="panel-body">
                 <!-- <form id="register-form" role="form" autocomplete="off" class="form">  -->
                   <div class="form-group">
-                    <div class="input-group">
+                    <div class="input-group" id='divGroup'>
                       <span class="input-group-text"><i class="fa fa-envelope color-blue"></i></span>
                       <input id="email" name="email" placeholder="Correo electrónico" style="box-shadow: 0 0 0 0.15rem rgba(0,123,255,.25);" class="form-control"  type="email">
                     </div>
